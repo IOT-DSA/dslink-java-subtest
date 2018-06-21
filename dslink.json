@@ -1,0 +1,45 @@
+{
+  "name": "dslink-java-subtest",
+  "version": "1.0.0",
+  "description": "Performance Test",
+  "license": "Apache 2.0",
+  "author": {
+    "name": "Aaron Hansen"
+  },
+  "main": "bin/dslink-java-alarm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IOT-DSA/dslink-java-subtest"
+  },
+  "bugs": {
+    "url": "https://github.com/IOT-DSA/dslink-java-subtest/issues"
+  },
+  "configs": {
+    "name": {
+      "type": "string",
+      "default": "subtest"
+    },
+    "broker": {
+      "type": "url"
+    },
+    "token": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "path",
+      "default": "nodes.json"
+    },
+    "key": {
+      "type": "path",
+      "default": ".key"
+    },
+    "log": {
+      "type": "enum",
+      "default": "info"
+    },
+    "handler_class": {
+      "type": "string",
+      "default": "org.dsa.iot.subtest.Main"
+    }
+  }
+}
