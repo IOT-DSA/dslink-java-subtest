@@ -62,8 +62,8 @@ public class Subtest {
                 startTest(event);
             }
         });
-        action.addParameter(new Parameter(SIZE, ValueType.NUMBER, new Value(100)));
-        action.addParameter(new Parameter(INTERVAL, ValueType.NUMBER, new Value(1)));
+        action.addParameter(new Parameter(SIZE, ValueType.NUMBER, new Value(10000)));
+        action.addParameter(new Parameter(INTERVAL, ValueType.NUMBER, new Value(0)));
         action.addParameter(new Parameter(QOS, ValueType.NUMBER, new Value(1)));
         mainNode.createChild(START, false)
                 .setSerializable(false)
@@ -222,6 +222,7 @@ public class Subtest {
                            .subscribe(new SubData(path, qos), this);
                 Thread.sleep(1000); //wait for subscription
                 time = System.currentTimeMillis();
+                lastTs = time;
                 new Publisher(size, interval).start();
                 waitForValue(size - 1, Math.max(10000, interval * 10));
                 setStats();
