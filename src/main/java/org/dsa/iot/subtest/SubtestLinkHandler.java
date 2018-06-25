@@ -14,7 +14,9 @@ public class SubtestLinkHandler extends DSLinkHandler {
     ///////////////////////////////////////////////////////////////////////////
 
     private Subtest subtest;
+    private boolean requesterConnected;
     private DSLink requesterLink;
+    private boolean responderConnected;
     private DSLink responderLink;
     private Node superRoot;
 
@@ -39,6 +41,10 @@ public class SubtestLinkHandler extends DSLinkHandler {
     @Override
     public void onRequesterConnected(DSLink link) {
         requesterLink = link;
+        requesterConnected = true;
+        if (responderConnected) {
+            subtest.start();
+        }
     }
 
     @Override
@@ -63,6 +69,9 @@ public class SubtestLinkHandler extends DSLinkHandler {
                 subtest = new Subtest();
             }
             subtest.init(this, serviceNode);
+        }
+        responderConnected = true;
+        if (requesterConnected) {
             subtest.start();
         }
     }

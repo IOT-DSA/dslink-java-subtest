@@ -114,6 +114,8 @@ public class Subtest {
 
     void start() {
         System.out.println("Subtest ready.");
+        new Subscriber(10000, 1, 1).start();
+
     }
 
     void startTest(ActionResult result) {
