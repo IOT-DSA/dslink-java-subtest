@@ -211,12 +211,11 @@ public class Subtest {
                 debug = mainNode.getChild(DEBUG, false).getValue().getBool();
                 valueNode.setValue(new Value(-1));
                 mainNode.getChild(RUNNING, false).setValue(new Value(true));
-                //time
                 time = System.currentTimeMillis();
                 String ts = TimeUtils.encode(time, false).toString();
                 mainNode.getChild(START_TS, false).setValue(new Value(ts));
                 System.out.println("\n***Start at " + ts);
-                //path
+                //subscribe back to self here
                 path = linkHandler.getResponderLink().getPath() + valueNode.getPath();
                 mainNode.getChild(PATH, false).setValue(new Value(path));
                 setStats();
